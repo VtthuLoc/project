@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'admin')));
 
-mongoose.connect('mongodb://localhost:27017/quangtamshop')
+mongoose.connect('mongodb+srv://vothithuloc116_db_user:12345789@cluster0.anw7unj.mongodb.net/?appName=Cluster0')
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
