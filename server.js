@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -14,9 +15,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'admin')));
 
-mongoose.connect(
-  "mongodb+srv://vothithuloc116_db_user:12345789@cluster0.anw7unj.mongodb.net/test?retryWrites=true&w=majority"
-)
+mongoose.connect(process.env.MONGO_URI)
 .then(() => console.log("MongoDB Atlas connected"))
 .catch(err => console.log(err));
 
