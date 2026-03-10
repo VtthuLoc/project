@@ -14,9 +14,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use('/admin', express.static(path.join(__dirname, 'admin')));
 
-mongoose.connect('mongodb+srv://vothithuloc116_db_user:12345789@cluster0.anw7unj.mongodb.net/?appName=Cluster0')
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.error('MongoDB connection error:', err));
+mongoose.connect(process.env.MONGO_URI)
+.then(() => console.log("MongoDB Atlas connected"))
+.catch(err => console.log(err));
 
 mongoose.connection.on('error', (err) => {
   console.error('MongoDB connection error:', err);
@@ -472,5 +472,5 @@ app.get('*', (req, res) => {
 const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
-  console.log(`Server đang chạy tại http://localhost:${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
